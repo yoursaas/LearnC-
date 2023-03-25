@@ -1,23 +1,27 @@
 #include <iostream>
+#include <vector>
 
 int main() {
-    const int size = 5;
-    int vector[size] = {3, 5, 1, 4, 2};
+    // Оголошення та заповнення масиву
+    std::vector<int> arr = {5, 3, 8, 1, 9, 2};
 
-    int* min_element = &vector[0];
-    int* max_element = &vector[0];
+    // Оголошення вказівників на перший та останній елементи масиву
+    int *min_ptr = &arr[0];
+    int *max_ptr = &arr[arr.size() - 1];
 
-    for (int i = 1; i < size; ++i) {
-        if (*min_element > vector[i]) {
-            min_element = &vector[i];
+    // Перевірка на найменший та найбільший елементи
+    for (auto i : arr) {
+        if (i < *min_ptr) {
+            min_ptr = &i;
         }
-        if (*max_element < vector[i]) {
-            max_element = &vector[i];
+        if (i > *max_ptr) {
+            max_ptr = &i;
         }
     }
 
-    std::cout << "Min element: " << *min_element << std::endl;
-    std::cout << "Max element: " << *max_element << std::endl;
+    // Виведення результатів
+    std::cout << "Найменший елемент: " << *min_ptr << std::endl;
+    std::cout << "Найбільший елемент: " << *max_ptr << std::endl;
 
     return 0;
 }
